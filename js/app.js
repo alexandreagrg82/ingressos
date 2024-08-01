@@ -9,21 +9,27 @@ function comprar() {
     let qtdIngresso = parseInt(document.getElementById('qtd').value);
     
     
-    if (isFinite(qtdIngresso) &&qtdIngresso <= 0) {
+    if (isFinite(qtdIngresso) && qtdIngresso <= 0) {
         alert('Você deve comprar ao menos 1 ingresso.');
         zerar();
         return;
         
     } 
 
-    if (tipoIngresso == "pista") {
-        comprarPista(qtdIngresso);
-    } else if (tipoIngresso == "inferior") {
-        comprarInferior(qtdIngresso);
-    } else {
-        comprarSuperior(qtdIngresso);
-    }
+   
+    switch (tipoIngresso) {
+        case 'pista':
+            comprarPista(qtdIngresso);
+            break;
+        case 'inferior':
+            comprarInferior(qtdIngresso);
+            break;
+        case 'superior':
+            comprarSuperior(qtdIngresso);
+            break;
+    }   
 
+    
     if (pista == 0 ) {
         document.getElementById('qtd-pista').textContent = 'indisponível';   
     }
